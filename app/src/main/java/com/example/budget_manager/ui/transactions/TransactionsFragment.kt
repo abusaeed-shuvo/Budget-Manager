@@ -6,26 +6,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentTransaction
 import com.example.budget_manager.R
+import com.example.budget_manager.databinding.FragmentProfileBinding
+import com.example.budget_manager.databinding.FragmentTransactionsBinding
 
 class TransactionsFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = TransactionsFragment()
-    }
-
-    private val viewModel: TransactionsViewModel by viewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // TODO: Use the ViewModel
-    }
+    private lateinit var binding:FragmentTransactionsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_transactions, container, false)
+        binding=FragmentTransactionsBinding.inflate(inflater,container,false)
+        val root=binding.root
+
+
+        return root
     }
 }
