@@ -1,4 +1,4 @@
-package com.example.budget_manager.data
+package com.example.budget_manager.data.transaction
 
 import android.content.Context
 import androidx.room.Database
@@ -12,6 +12,7 @@ abstract class TransactionDatabase : RoomDatabase() {
 
 
     companion object {
+        @Volatile
         private var database: TransactionDatabase? = null
 
         fun getDB(context: Context): TransactionDatabase {

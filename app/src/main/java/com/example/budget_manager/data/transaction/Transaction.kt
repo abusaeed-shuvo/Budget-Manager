@@ -1,4 +1,4 @@
-package com.example.budget_manager.data
+package com.example.budget_manager.data.transaction
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

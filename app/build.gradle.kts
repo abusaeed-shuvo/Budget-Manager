@@ -1,9 +1,11 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("com.google.devtools.ksp") version "2.0.20-1.0.24"
+    id("org.jetbrains.kotlin.kapt")
+    alias(libs.plugins.google.gms.google.services)
 
 }
+
 
 android {
     namespace = "com.example.budget_manager"
@@ -38,6 +40,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
 }
 
 
@@ -54,10 +57,21 @@ dependencies {
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.fragment.ktx)
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.database)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    // RecyclerView and ListAdapter support
+    implementation(libs.androidx.recyclerview) // Or a newer version if available
+
+
+    // Lifecycle to use lifecycleScope
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+
+    // Room KTX for coroutines
+    implementation(libs.androidx.room.ktx)
 
 
     implementation(libs.androidx.room.runtime)
@@ -65,6 +79,7 @@ dependencies {
 
     // To use Kotlin annotation processing tool (kapt)
     // To use Kotlin Symbol Processing (KSP)
-    ksp(libs.room.compiler)
+//    ksp(libs.room.compiler)
+    kapt(libs.room.compiler)
 
 }

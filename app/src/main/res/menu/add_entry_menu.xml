@@ -3,9 +3,13 @@
 
     <item
         android:id="@+id/income"
+        android:icon="@drawable/baseline_arrow_forward_24"
+        android:iconTint="@color/credit"
         android:title="Income" />
     <item
         android:id="@+id/expense"
+        android:icon="@drawable/baseline_arrow_back_24"
+        android:iconTint="@color/debt"
         android:title="Expense" />
 
 </menu>

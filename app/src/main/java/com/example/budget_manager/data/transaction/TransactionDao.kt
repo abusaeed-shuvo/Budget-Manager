@@ -1,4 +1,4 @@
-package com.example.budget_manager.data
+package com.example.budget_manager.data.transaction
 
 import androidx.room.Dao
 import androidx.room.Delete
@@ -19,7 +19,12 @@ interface TransactionDao {
     fun deleteData(transaction: Transaction)
 
     @Query("SELECT * FROM `Transaction`")
-    fun getAllData(): List<Transaction>
+    suspend fun getAllData(): List<Transaction>
 
+    @Query("SELECT * FROM `Transaction` WHERE id IN (:id)")
+    fun getDataWithId(id:List<Int>):List<Transaction>
+
+@Query("SELECT * FROM `Transaction` WHERE month IN (:month) AND year IN (:year)")
+    fun getAllDataWithMonthAndYear(month:Int,year:Int):List<Transaction>
 
 }
