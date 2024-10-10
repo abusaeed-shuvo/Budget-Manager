@@ -2,6 +2,7 @@ package com.example.budget_manager.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -15,6 +16,7 @@ class TransactionAdapter(var transactionClicker: TransactionClicker) :
 
     interface TransactionClicker {
         fun onTransactionClick(transaction: Transaction)
+        fun deleteTransaction(transaction: Transaction)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TransactionViewHolder {
@@ -60,7 +62,24 @@ class TransactionAdapter(var transactionClicker: TransactionClicker) :
             holder.itemView.setOnClickListener { _ ->
                 transactionClicker.onTransactionClick(it)
             }
+            holder.binding.btnDelete.setOnClickListener{v->
+                val builder = AlertDialog.Builder(v.context)
+                builder.setTitle("Clear This Entry:")
+                builder.setMessage("Do you want to delete this entry?")
 
+                builder.setPositiveButton("Delete") {_,_ ->
+
+                   transactionClicker.deleteTransaction(it)
+
+                }
+                builder.setNegativeButton("Cancel") { p0, _ ->
+                    p0.cancel()
+                }
+
+                val alertDialog = builder.create()
+                alertDialog.show()
+
+            }
 
         }
 

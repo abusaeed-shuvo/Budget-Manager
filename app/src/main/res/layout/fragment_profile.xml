@@ -14,15 +14,6 @@
         android:contentDescription="Profile icon"
         android:src="@drawable/male" />
 
-    <TextView
-        android:id="@+id/userNameTV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:padding="5dp"
-        android:text="User Name"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
 
     <TextView
         android:id="@+id/userEmailTV"
